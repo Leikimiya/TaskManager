@@ -25,7 +25,10 @@
         <ul id="mini-list">
         @foreach($task->minis as $mini)
             <li class="mb-3">
-            <input required class="form-control form-control-lg mb-2" name="mini[]" type="text" value="{{$mini->title}}" aria-label=".form-control-lg example">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="mini[]" value="{{$mini->title}}" aria-describedby="button-addon2">
+                    <button class="btn btn-danger del-mini" type="button">-</button>
+                </div>
             </li>
         @endforeach
         </ul>
@@ -55,7 +58,22 @@
     <script>
         $("#add-mini").on("click",function (event){
             event.preventDefault();
-            $("#mini-list").append('<li class="mb-3"> <input type="text" name="mini[]" class="form-control"> </li>')
+            $("#mini-list").append('<li class="mb-3"> <div class="input-group mb-3">' +
+                '<input type="text" class="form-control" name="mini[]">' +
+                '<button class="btn btn btn-danger del-mini" type="button" >-</button>'+
+                '</div>'+
+                ' </li>')
+            $(".del-mini").on("click",function (event){
+                event.preventDefault();
+                $(this).parent().remove();
+            });
+        });
+    </script>
+    <script>
+        $(".del-mini").on("click",function (event){
+            event.preventDefault();
+            $(this).parent().remove();
         });
     </script>
 @endsection
+

@@ -44,7 +44,11 @@
     <script>
         $("#add-mini").on("click",function (event){
             event.preventDefault();
-         $("#mini-list").append('<li class="mb-3"> <input type="text" name="mini[]" class="form-control"> </li>')
-        });
+         $("#mini-list").append('<li class="mb-3"> <div class="input-group mb-3">' +
+             '<input type="text" class="form-control" ame="mini[]">' +
+             '<button class="btn btn btn-danger" type="button" id="button-addon2">-</button>'+
+             '</div>'+
+             ' </li>')});
     </script>
 @endsection
+
